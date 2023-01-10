@@ -24,8 +24,12 @@
 
 <body class="dark-background">
 
-  <header>
-    <div class="navbar navbar-expand green-background">
+
+
+
+
+  <header class="navbar-fixed-top d-none">
+    <nav class="navbar navbar-expand fixed-top green-background">
       <div class="container">
         <a href="#" class="navbar-brand"><img class="nav-logo" src="images/watchit-high-resolution-logo-white-.png" alt=""></a>
         <ul class="navbar-nav">
@@ -34,24 +38,70 @@
           </li>
         </ul>
       </div>
-    </div>
+    </nav>
   </header>
+
+
   <main>
+
+
     <div class="container">
-      <div class="row">
+      <div class="row start-overlay align-content-center dark-background">
+        <div class="col-12 d-flex justify-content-center">
+          <img class="img-fluid start-img" src="images/watchit-high-resolution-logo-white-.png" alt="">
+        </div>
+        <div class="col-12 d-flex justify-content-center py-5">
+          <button type="button" class="btn btn-green text-white px-5 fs-3 font-changa">Get Started</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <form id="search-form" data-view="search-form" class="row justify-content-center">
         <div class="col-12 py-3">
           <h1 class="text-custom-grey text-center font-changa">Search for Movies</h1>
         </div>
-        <form action=""></form>
-      </div>
-      <form id="search-form" class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-6">
           <input type="text" class="form-control mb-4 grey-background border-none" placeholder="Name of a movie...">
         </div>
         <div class="col-12 d-flex justify-content-center">
           <button type="button" class="btn btn-green text-white px-5 fs-3 font-changa">Search</button>
         </div>
       </form>
+
+
+      <div data-view="results" class="row">
+        <div class="col-12 py-3">
+          <h3 class="text-custom-grey  font-changa">Results For: 'shawshank redemption'</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster-2.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa">Star Wars: Episode V - The Empire Strikes Back</h6>
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </main>
   <script src="js/data.js"></script>

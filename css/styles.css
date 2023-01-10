@@ -2,6 +2,10 @@
   width: 4rem;
 }
 
+body {
+  padding-top: 70px;
+}
+
 .green-background {
   background-color: #5ac092;
 }
@@ -30,4 +34,20 @@
 .font-changa {
   font-family: Changa, sans-serif;
   font-weight: 400;
+}
+
+.font-wieght-normal {
+  font-weight: 300;
+}
+
+.start-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.start-img {
+  max-height: 250px;
 }
