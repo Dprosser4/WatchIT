@@ -105,6 +105,12 @@ function renderSearchResults(response) {
         h6.setAttribute('class', 'text-custom-grey font-wieght-normal font-changa');
         h6.textContent = response.Search[i].Title;
         h6Col.appendChild(h6);
+        var showDetailsBtn = document.createElement('btn');
+        showDetailsBtn.textContent = 'Show Details';
+        showDetailsBtn.setAttribute('class', 'btn btn-green text-white mt-4 px-3 font-changa');
+        showDetailsBtn.setAttribute('type', 'button');
+        showDetailsBtn.setAttribute('data-movie-id', response.Search[i].imdbID);
+        h6Col.appendChild(showDetailsBtn);
         resultsInnerRow.appendChild(h6Col);
       }
     }
