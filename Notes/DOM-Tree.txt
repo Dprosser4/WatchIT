@@ -1,0 +1,27 @@
+<!--
+      <div class="row">
+        <div class="col-12 py-3">
+          <h3 class="text-custom-grey font-changa">Results For: 'shawshank redemption'</h3>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
