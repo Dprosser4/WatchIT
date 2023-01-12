@@ -118,7 +118,16 @@ function renderSearchResults(response) {
         showDetailsBtn.setAttribute('class', 'btn btn-green text-white mt-4 px-3 font-changa');
         showDetailsBtn.setAttribute('type', 'button');
         showDetailsBtn.setAttribute('data-movie-id', response.Search[i].imdbID);
+        var addWatchListBtn = document.createElement('btn');
+        addWatchListBtn.setAttribute('type', 'button');
+        addWatchListBtn.setAttribute('class', 'btn btn-green text-white mt-4 px-3 font-changa');
+        var watchListBtnIcon = document.createElement('i');
+        watchListBtnIcon.setAttribute('class', 'fa-solid fa-plus');
+        addWatchListBtn.appendChild(watchListBtnIcon);
+        addWatchListBtn.append(' Watch List');
+
         h6Col.appendChild(showDetailsBtn);
+        h6Col.appendChild(addWatchListBtn);
         resultsInnerRow.appendChild(h6Col);
       }
     }
