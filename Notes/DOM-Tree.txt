@@ -1,6 +1,7 @@
-      <!--
+      <!--results DOM tree
 
-      <div class="row">
+
+     <div class="row">
         <div class="col-12 py-3">
           <h3 class="text-custom-grey font-changa">Results For: 'shawshank redemption'</h3>
         </div>
@@ -22,27 +23,56 @@
             <div class="col-6 col-md-3 pb-3">
               <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
               <button type="button" class="btn btn-green text-white mt-4 px-3 font-changa">Show Details</button>
-
+              <button type="button" class="btn btn-green text-white mt-4 px-3 font-changa"><i class="fa-solid fa-plus"></i> Watch List</button>
             </div>
           </div>
         </div>
-      </div>-->
+      </div>
 
 
-    <!--
-      <div class="row">
+
+
+ -->
+
+
+    <!--details DOM Tree
+
+       <div class="row">
         <div class="col-12 col-md-6">
           <img class="img-100 rounded mt-3" src="images/test-poster.jpg" alt="">
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <h3 class="text-custom-grey fw-light font-changa" >The Shawshank Redemption</h3>
+          <h3 class="text-custom-grey fw-light font-changa">The Shawshank Redemption</h3>
           <h6 class="text-custom-grey font-wieght-normal font-changa">Frank Darabont</h6>
           <h6 class="text-custom-grey font-wieght-normal font-changa">1994</h6>
           <h5 class="text-custom-grey text-decoration-underline font-wieght-normal font-changa">Plot Summary:</h5>
-          <p class="text-custom-grey font-wieght-normal font-changa">Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+          <p class="text-custom-grey font-wieght-normal font-changa">Two imprisoned men bond over a number of years, finding
+            solace and eventual redemption through acts of common decency.</p>
           <h5 class="text-custom-grey text-decoration-underline font-wieght-normal font-changa">Awards</h5>
-          <p class="text-custom-grey font-wieght-normal font-changa">Nominated for 7 Oscars. 21 wins &amp; 43 nominations total</p>
+          <p class="text-custom-grey font-wieght-normal font-changa">Nominated for 7 Oscars. 21 wins &amp; 43 nominations
+            total</p>
+          <button type="button" class="back-btn btn btn-green text-white mt-4 ms-2  px-3 font-changa float-end"><i
+              class="fa-solid fa-plus"></i> Watch List</button>
+
           <button type="button" class="back-btn btn btn-green text-white mt-4 px-3 font-changa float-end"><i class="fa-solid fa-chevron-left"></i><span> Back</span></button>
         </div>
       </div>
+
  -->
+
+
+
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <img class="img-fluid rounded" src="images/test-poster.jpg" alt="">
+            </div>
+            <div class="col-6 col-md-3 pb-3">
+              <h6 class="text-custom-grey font-wieght-normal font-changa"> The Shawshank Redemption</h6>
+              <button type="button" class="btn btn-green text-white mt-4 px-3 font-changa">Show Details</button>
+            </div>
+          </div>
