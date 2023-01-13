@@ -70,6 +70,7 @@ function navBarHandler(event) {
     $detailView.replaceChildren();
   } else if (event.target.textContent === 'WATCH LIST') {
     $watchListInnerRow.replaceChildren();
+    $detailView.replaceChildren();
     renderWatchlist(data.movies);
     viewSwap('watchlist-view');
 
