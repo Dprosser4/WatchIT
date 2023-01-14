@@ -3,9 +3,9 @@
 var data = {
   view: 'get-started',
   movies: [],
-  editing: null,
   nextMovieID: 1,
-  introModalSeen: false
+  introModalSeen: false,
+  movieIndexToDelete: null
 };
 // eslint-disable-next-line no-unused-vars
 var apiKey = '40b47319';

@@ -65,7 +65,7 @@ function searchFormSubmit(event) {
 $navBar.addEventListener('click', navBarHandler);
 
 function navBarHandler(event) {
-  if (event.target.tagName === 'I') {
+  if (event.target.matches('.search-view')) {
     viewSwap('search-form');
     $detailView.replaceChildren();
   } else if (event.target.textContent === 'WATCH LIST') {
@@ -80,7 +80,7 @@ function navBarHandler(event) {
 function getMovieListData(string) {
   var xhr = new XMLHttpRequest();
   // eslint-disable-next-line no-undef
-  xhr.open('GET', 'http://www.omdbapi.com/?apikey=' + apiKey + '&s=' + string);
+  xhr.open('GET', 'https://www.omdbapi.com/?apikey=' + apiKey + '&s=' + string);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     renderResultsHeaderDom(string);
@@ -191,7 +191,7 @@ function addMovieToWatchList(event) {
 function getMovieDetailsData(string) {
   var xhr = new XMLHttpRequest();
   // eslint-disable-next-line no-undef
-  xhr.open('GET', 'http://www.omdbapi.com/?apikey=' + apiKey + '&i=' + string);
+  xhr.open('GET', 'https://www.omdbapi.com/?apikey=' + apiKey + '&i=' + string);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     renderDetailsView(xhr.response);
@@ -294,23 +294,34 @@ function renderWatchlist(moviesArray) {
     img.setAttribute('class', 'img-fluid rounded');
     imgCol.appendChild(img);
     var h6Col = document.createElement('div');
-    h6Col.setAttribute('class', 'col-6 col-md-3 pb-3');
+    h6Col.setAttribute('class', 'col-6 col-md-3 pb-3 d-flex flex-column justify-content-between');
     var h6 = document.createElement('h6');
     h6.setAttribute('class', 'text-custom-grey font-wieght-normal font-changa');
     h6.textContent = moviesArray[i].title;
     h6Col.appendChild(h6);
     var showDetailsBtn = document.createElement('btn');
     showDetailsBtn.textContent = 'Show Details';
-    showDetailsBtn.setAttribute('class', 'btn btn-green text-white mt-4 me-3 px-3 font-changa');
+    showDetailsBtn.setAttribute('class', 'btn btn-green text-white mt-4 me-3 px-3 align-self-start font-changa');
     showDetailsBtn.setAttribute('type', 'button');
     showDetailsBtn.setAttribute('data-movie-id', moviesArray[i].imdbID);
     h6Col.appendChild(showDetailsBtn);
+    var deleteBtn = document.createElement('btn');
+    deleteBtn.setAttribute('class', 'delete-btn btn btn-green text-white align-self-end font-changa');
+    deleteBtn.setAttribute('type', 'button');
+    deleteBtn.setAttribute('data-current-movie-index', i);
+    var deleteBtnIcon = document.createElement('i');
+    deleteBtnIcon.setAttribute('class', 'fa-solid fa-trash-can');
+    deleteBtnIcon.setAttribute('data-current-movie-index', i);
+    deleteBtn.appendChild(deleteBtnIcon);
+    h6Col.appendChild(deleteBtn);
     $watchListInnerRow.appendChild(imgCol);
     $watchListInnerRow.appendChild(h6Col);
   }
 }
 
 $watchListInnerRow.addEventListener('click', watchListBtnHandler);
+
+var $deleteModal = document.querySelector('.overlay');
 
 function watchListBtnHandler(event) {
   if (event.target.textContent === 'Show Details') {
@@ -319,4 +330,31 @@ function watchListBtnHandler(event) {
     btnID = btnID.getAttribute('data-movie-id');
     getMovieDetailsData(btnID);
   }
+  if (event.target.matches('.delete-btn') || event.target.matches('.fa-trash-can')) {
+    $deleteModal.classList.remove('d-none');
+    $navBar.classList.add('d-none');
+    data.movieIndexToDelete = Number(event.target.getAttribute('data-current-movie-index'));
+  }
+}
+
+$deleteModal.addEventListener('click', modalDelegation);
+
+function modalDelegation(event) {
+  if (event.target.textContent === 'CANCEL') {
+    $deleteModal.classList.add('d-none');
+    $navBar.classList.remove('d-none');
+  }
+  if (event.target.textContent === 'CONFIRM') {
+    $deleteModal.classList.add('d-none');
+    $navBar.classList.remove('d-none');
+    deleteMovie();
+    $watchListInnerRow.replaceChildren();
+    renderWatchlist(data.movies);
+  }
+
+}
+
+function deleteMovie() {
+  data.movies.splice(data.movieIndexToDelete, 1);
+  data.movieIndexToDelete = null;
 }
