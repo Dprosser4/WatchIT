@@ -5,6 +5,13 @@ function onPageLoad(event) {
   if (data.introModalSeen === false) {
     $getStartedView.classList.remove('d-none');
     $navBar.classList.add('d-none');
+    // eslint-disable-next-line no-undef
+    gsap.to('.start-heading', { delay: 1, duration: 3, opacity: 0, display: 'none' });
+    // eslint-disable-next-line no-undef
+    gsap.from('.start-img', { display: 'none', duration: 2.5, delay: 4.5, opacity: 0, x: -150, y: -0, ease: 'bounce', scale: 0.25, rotation: -270 });
+    // eslint-disable-next-line no-undef
+    gsap.from('#get-started-btn', { duration: 1.5, delay: 6.5, opacity: 0 });
+
   }
 }
 
@@ -12,11 +19,20 @@ var $getStartedBtn = document.querySelector('#get-started-btn');
 var $getStartedView = document.querySelector('#get-started');
 var $navBar = document.querySelector('.navbar-fixed-top');
 var $searchView = document.querySelector('#search-form');
+var $searchInputForm = document.querySelector('#search-input-form');
 var $resultsView = document.querySelector('#results-page');
 var $detailView = document.querySelector('#details-view');
 var $watchListView = document.querySelector('#watchlist-view');
+var $watchListInnerRow = document.querySelector('.watch-list-inner');
+var $deleteModal = document.querySelector('.overlay');
 
 $getStartedBtn.addEventListener('click', getStarted);
+$searchInputForm.addEventListener('submit', searchFormSubmit);
+$navBar.addEventListener('click', navBarHandler);
+$resultsView.addEventListener('click', resultsButtons);
+$detailView.addEventListener('click', detailBtnHandler);
+$watchListInnerRow.addEventListener('click', watchListBtnHandler);
+$deleteModal.addEventListener('click', modalDelegation);
 
 function getStarted(event) {
   data.introModalSeen = true;
@@ -52,17 +68,12 @@ function viewSwap(string) {
   }
 }
 
-var $searchInputForm = document.querySelector('#search-input-form');
-$searchInputForm.addEventListener('submit', searchFormSubmit);
-
 function searchFormSubmit(event) {
   event.preventDefault();
   getMovieListData($searchInputForm.elements.search.value);
   viewSwap('results-page');
   $searchInputForm.reset();
 }
-
-$navBar.addEventListener('click', navBarHandler);
 
 function navBarHandler(event) {
   if (event.target.matches('.search-view')) {
@@ -157,8 +168,6 @@ function renderSearchResults(response) {
   $resultsView.appendChild(resultsRow);
 }
 
-$resultsView.addEventListener('click', resultsButtons);
-
 function resultsButtons(event) {
 
   if (event.target.textContent === 'Show Details') {
@@ -183,7 +192,8 @@ function addMovieToWatchList(event) {
   newMovie.img = img;
   newMovie.ID = data.nextMovieID;
   newMovie.imdbID = newMovieID;
-  data.movies.push(newMovie);
+  newMovie.watched = false;
+  data.movies.unshift(newMovie);
   data.nextMovieID++;
   event.target.textContent = '  Added  ';
 }
@@ -266,8 +276,6 @@ function renderDetailsView(response) {
   $detailView.appendChild(detailRow);
 }
 
-$detailView.addEventListener('click', detailBtnHandler);
-
 function detailBtnHandler(event) {
   if (event.target.textContent === ' Back') {
     viewSwap(data.view);
@@ -276,8 +284,6 @@ function detailBtnHandler(event) {
     addMovieToWatchList(event);
   }
 }
-
-var $watchListInnerRow = document.querySelector('.watch-list-inner');
 
 function renderWatchlist(moviesArray) {
   if (moviesArray.length < 1) {
@@ -305,6 +311,20 @@ function renderWatchlist(moviesArray) {
     showDetailsBtn.setAttribute('type', 'button');
     showDetailsBtn.setAttribute('data-movie-id', moviesArray[i].imdbID);
     h6Col.appendChild(showDetailsBtn);
+
+    var watchedBtn = document.createElement('btn');
+    watchedBtn.setAttribute('type', 'button');
+    watchedBtn.setAttribute('data-current-movie-index', i);
+    if (data.movies[i].watched) {
+      watchedBtn.setAttribute('class', 'btn btn-green text-custom-grey align-self-start font-changa');
+      watchedBtn.textContent = 'Watched';
+    } else {
+      watchedBtn.setAttribute('class', 'btn btn-green text-white align-self-start font-changa');
+      watchedBtn.textContent = 'Watch?';
+    }
+
+    h6Col.appendChild(watchedBtn);
+
     var deleteBtn = document.createElement('btn');
     deleteBtn.setAttribute('class', 'delete-btn btn btn-green text-white align-self-end font-changa');
     deleteBtn.setAttribute('type', 'button');
@@ -319,10 +339,6 @@ function renderWatchlist(moviesArray) {
   }
 }
 
-$watchListInnerRow.addEventListener('click', watchListBtnHandler);
-
-var $deleteModal = document.querySelector('.overlay');
-
 function watchListBtnHandler(event) {
   if (event.target.textContent === 'Show Details') {
     viewSwap('details-view');
@@ -335,9 +351,16 @@ function watchListBtnHandler(event) {
     $navBar.classList.add('d-none');
     data.movieIndexToDelete = Number(event.target.getAttribute('data-current-movie-index'));
   }
-}
+  if (event.target.textContent === 'Watch?') {
+    var currentMovie = data.movies[Number(event.target.getAttribute('data-current-movie-index'))];
+    currentMovie.watched = true;
+    data.movies.splice(Number(event.target.getAttribute('data-current-movie-index')), 1);
+    data.movies.push(currentMovie);
+    $watchListInnerRow.replaceChildren();
+    renderWatchlist(data.movies);
+  }
 
-$deleteModal.addEventListener('click', modalDelegation);
+}
 
 function modalDelegation(event) {
   if (event.target.textContent === 'CANCEL') {
