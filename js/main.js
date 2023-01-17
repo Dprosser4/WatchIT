@@ -6,11 +6,11 @@ function onPageLoad(event) {
     $getStartedView.classList.remove('d-none');
     $navBar.classList.add('d-none');
     // eslint-disable-next-line no-undef
-    gsap.to('.start-heading', { delay: 1, duration: 3, opacity: 0, display: 'none' });
+    gsap.to('.start-heading', { delay: 0.5, duration: 1.5, opacity: 0, display: 'none' });
     // eslint-disable-next-line no-undef
-    gsap.from('.start-img', { display: 'none', duration: 2.5, delay: 4.5, opacity: 0, x: -150, y: -0, ease: 'bounce', scale: 0.25, rotation: -270 });
+    gsap.from('.start-img', { display: 'none', duration: 2.5, delay: 2, opacity: 0, x: -150, y: -0, ease: 'bounce', scale: 0.25, rotation: -270 });
     // eslint-disable-next-line no-undef
-    gsap.from('#get-started-btn', { duration: 1.5, delay: 6.5, opacity: 0 });
+    gsap.from('#get-started-btn', { duration: 1.5, delay: 4.5, opacity: 0 });
 
   }
 }
@@ -79,7 +79,7 @@ function navBarHandler(event) {
   if (event.target.matches('.search-view')) {
     viewSwap('search-form');
     $detailView.replaceChildren();
-  } else if (event.target.textContent === 'WATCH LIST') {
+  } else if (event.target.matches('.watch-list')) {
     $watchListInnerRow.replaceChildren();
     $detailView.replaceChildren();
     renderWatchlist(data.movies);

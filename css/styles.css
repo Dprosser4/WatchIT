@@ -21,6 +21,20 @@ body {
 .btn-green {
   background-color: #5ac092;
   border: none;
+  transition: background-color 0.5s;
+}
+
+.btn-green:hover {
+  background-color: #367659;
+}
+
+.nav-item {
+  transition: background-color 0.5s;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+  background-color: #367659;
 }
 
 .dark-background {
