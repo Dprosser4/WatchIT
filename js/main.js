@@ -141,7 +141,7 @@ function renderSearchResults(response) {
         h6Col.appendChild(h6);
         var showDetailsBtn = document.createElement('btn');
         showDetailsBtn.textContent = 'Show Details';
-        showDetailsBtn.setAttribute('class', 'btn btn-green text-white mt-4 me-3 px-3 font-changa');
+        showDetailsBtn.setAttribute('class', 'btn btn-green text-nowrap text-white mt-4 me-3 px-3 font-changa');
         showDetailsBtn.setAttribute('type', 'button');
         showDetailsBtn.setAttribute('data-movie-id', response.Search[i].imdbID);
         var addWatchListBtn = document.createElement('btn');
@@ -149,7 +149,7 @@ function renderSearchResults(response) {
         addWatchListBtn.setAttribute('data-movie-id', response.Search[i].imdbID);
         addWatchListBtn.setAttribute('data-movie-url', response.Search[i].Poster);
         addWatchListBtn.setAttribute('data-movie-title', response.Search[i].Title);
-        addWatchListBtn.setAttribute('class', 'btn btn-green text-white mt-4 px-3 font-changa');
+        addWatchListBtn.setAttribute('class', 'btn btn-green text-nowrap text-white mt-4 px-3 font-changa');
         var watchListBtnIcon = document.createElement('i');
         watchListBtnIcon.setAttribute('class', 'fa-solid fa-plus');
         addWatchListBtn.appendChild(watchListBtnIcon);
@@ -213,12 +213,12 @@ function renderDetailsView(response) {
   var detailRow = document.createElement('div');
   detailRow.classList.add('row');
   var detailCol1 = document.createElement('div');
-  detailCol1.setAttribute('class', 'col-12 col-md-6');
+  detailCol1.setAttribute('class', 'col-12 col-sm-6');
   var detailImg = document.createElement('img');
   detailImg.setAttribute('class', 'img-100 rounded mt-3');
   detailImg.setAttribute('src', response.Poster);
   var detailCol2 = document.createElement('div');
-  detailCol2.setAttribute('class', 'col-12 col-md-6 mt-3');
+  detailCol2.setAttribute('class', 'col-12 col-sm-6 mt-3');
   var title = document.createElement('h3');
   title.setAttribute('class', 'text-custom-grey fw-light font-changa');
   title.textContent = response.Title;
@@ -294,20 +294,20 @@ function renderWatchlist(moviesArray) {
   }
   for (var i = 0; i < moviesArray.length; i++) {
     var imgCol = document.createElement('div');
-    imgCol.setAttribute('class', 'col-6 col-md-3 pb-3');
+    imgCol.setAttribute('class', 'col-6 col-sm-3 pb-3');
     var img = document.createElement('img');
     img.setAttribute('src', moviesArray[i].img);
     img.setAttribute('class', 'img-fluid rounded');
     imgCol.appendChild(img);
     var h6Col = document.createElement('div');
-    h6Col.setAttribute('class', 'col-6 col-md-3 pb-3 d-flex flex-column justify-content-between');
+    h6Col.setAttribute('class', 'col-6 col-sm-3 pb-3 d-flex flex-column justify-content-between');
     var h6 = document.createElement('h6');
     h6.setAttribute('class', 'text-custom-grey font-wieght-normal font-changa');
     h6.textContent = moviesArray[i].title;
     h6Col.appendChild(h6);
     var showDetailsBtn = document.createElement('btn');
     showDetailsBtn.textContent = 'Show Details';
-    showDetailsBtn.setAttribute('class', 'btn btn-green text-white mt-4 me-3 px-3 align-self-start font-changa');
+    showDetailsBtn.setAttribute('class', 'btn text-nowrap btn-green text-white mt-4 me-3 px-3 align-self-start font-changa');
     showDetailsBtn.setAttribute('type', 'button');
     showDetailsBtn.setAttribute('data-movie-id', moviesArray[i].imdbID);
     h6Col.appendChild(showDetailsBtn);
@@ -316,17 +316,17 @@ function renderWatchlist(moviesArray) {
     watchedBtn.setAttribute('type', 'button');
     watchedBtn.setAttribute('data-current-movie-index', i);
     if (data.movies[i].watched) {
-      watchedBtn.setAttribute('class', 'btn btn-green text-custom-grey align-self-start font-changa');
+      watchedBtn.setAttribute('class', 'btn btn-green mt-2 text-nowrap text-custom-grey align-self-start font-changa');
       watchedBtn.textContent = 'Watched';
     } else {
-      watchedBtn.setAttribute('class', 'btn btn-green text-white align-self-start font-changa');
+      watchedBtn.setAttribute('class', 'btn btn-green mt-2 text-nowrap text-white align-self-start font-changa');
       watchedBtn.textContent = 'Watch?';
     }
 
     h6Col.appendChild(watchedBtn);
 
     var deleteBtn = document.createElement('btn');
-    deleteBtn.setAttribute('class', 'delete-btn btn btn-green text-white align-self-end font-changa');
+    deleteBtn.setAttribute('class', 'delete-btn btn btn-green mt-4 text-white align-self-end font-changa');
     deleteBtn.setAttribute('type', 'button');
     deleteBtn.setAttribute('data-current-movie-index', i);
     var deleteBtnIcon = document.createElement('i');
