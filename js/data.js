@@ -12,6 +12,8 @@ var apiKey = '40b47319';
 
 window.addEventListener('beforeunload', saveData);
 
+window.addEventListener('pagehide', saveData);
+
 function saveData(event) {
   var movieData = JSON.stringify(data);
   localStorage.setItem('movieData', movieData);
