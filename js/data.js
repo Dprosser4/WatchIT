@@ -1,4 +1,4 @@
-/* exported data */
+/* exported data, apiKey */
 
 var data = {
   view: 'get-started',
@@ -7,7 +7,7 @@ var data = {
   introModalSeen: false,
   movieIndexToDelete: null
 };
-// eslint-disable-next-line no-unused-vars
+
 var apiKey = '40b47319';
 
 window.addEventListener('beforeunload', saveData);
