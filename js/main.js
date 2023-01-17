@@ -25,6 +25,7 @@ var $detailView = document.querySelector('#details-view');
 var $watchListView = document.querySelector('#watchlist-view');
 var $watchListInnerRow = document.querySelector('.watch-list-inner');
 var $deleteModal = document.querySelector('.overlay');
+var $spinner = document.querySelector('.spinner-overlay');
 
 $getStartedBtn.addEventListener('click', getStarted);
 $searchInputForm.addEventListener('submit', searchFormSubmit);
@@ -93,9 +94,18 @@ function getMovieListData(string) {
   // eslint-disable-next-line no-undef
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=' + apiKey + '&s=' + string);
   xhr.responseType = 'json';
+  $spinner.classList.remove('d-none');
+  xhr.addEventListener('error', function () {
+    var errorMessage = document.createElement('h6');
+    errorMessage.setAttribute('class', 'text-custom-grey font-wieght-normal font-changa');
+    errorMessage.textContent = 'Sorry, there was an error connecting to the network! Please check your internet connection and try again.';
+    $resultsView.appendChild(errorMessage);
+    $spinner.classList.add('d-none');
+  });
   xhr.addEventListener('load', function () {
     renderResultsHeaderDom(string);
     renderSearchResults(xhr.response);
+    $spinner.classList.add('d-none');
   });
   xhr.send();
 }
@@ -162,7 +172,7 @@ function renderSearchResults(response) {
   } else if (response.Response === 'False') {
     var h6No = document.createElement('h6');
     h6No.setAttribute('class', 'text-custom-grey font-wieght-normal font-changa');
-    h6No.textContent = 'No Results Found';
+    h6No.textContent = 'No Results Found. Try Searching Again...';
     resultsInnerRow.appendChild(h6No);
   }
   $resultsView.appendChild(resultsRow);
@@ -203,8 +213,17 @@ function getMovieDetailsData(string) {
   // eslint-disable-next-line no-undef
   xhr.open('GET', 'https://www.omdbapi.com/?apikey=' + apiKey + '&i=' + string);
   xhr.responseType = 'json';
+  $spinner.classList.remove('d-none');
+  xhr.addEventListener('error', function () {
+    var errorMessage = document.createElement('h6');
+    errorMessage.setAttribute('class', 'text-custom-grey font-wieght-normal font-changa');
+    errorMessage.textContent = 'Sorry, there was an error connecting to the network! Please check your internet connection and try again.';
+    $detailView.appendChild(errorMessage);
+    $spinner.classList.add('d-none');
+  });
   xhr.addEventListener('load', function () {
     renderDetailsView(xhr.response);
+    $spinner.classList.add('d-none');
   });
   xhr.send();
 }
