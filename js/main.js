@@ -1,3 +1,4 @@
+/* global gsap */
 
 document.addEventListener('DOMContentLoaded', onPageLoad);
 
@@ -5,11 +6,8 @@ function onPageLoad(event) {
   if (data.introModalSeen === false) {
     $getStartedView.classList.remove('d-none');
     $navBar.classList.add('d-none');
-    // eslint-disable-next-line no-undef
     gsap.to('.start-heading', { delay: 0.5, duration: 1.5, opacity: 0, display: 'none' });
-    // eslint-disable-next-line no-undef
     gsap.from('.start-img', { display: 'none', duration: 2.5, delay: 2, opacity: 0, x: -150, y: -0, ease: 'bounce', scale: 0.25, rotation: -270 });
-    // eslint-disable-next-line no-undef
     gsap.from('#get-started-btn', { duration: 1.5, delay: 4.5, opacity: 0 });
 
   }
