@@ -12,6 +12,8 @@ As a movie lover, I wanted to build an application that empowers users to easily
 - JavaScript
 - HTML5
 - CSS3
+- Bootstrap 5
+- GSAP Animation
 
 ## Live Demo
 
