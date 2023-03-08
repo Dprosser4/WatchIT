@@ -27,6 +27,14 @@ Try the application live at [https://dprosser4.github.io/WatchIT/](https://dpros
 
 ## Preview
 
+
+https://user-images.githubusercontent.com/98434681/223862324-adc62ea9-a65e-48fb-91ad-4b9a8646ba0e.mov
+
+
+
+https://user-images.githubusercontent.com/98434681/223861361-e7257ce3-4fff-4f9e-a8a5-14f25154b999.mov
+
+
 ## Development
 
 ### System Requirements
@@ -39,6 +47,6 @@ Try the application live at [https://dprosser4.github.io/WatchIT/](https://dpros
 
     ```shell
     git clone https://github.com/Dprosser4/WatchIT.git
-    cd game-finder
+    cd WATCHIT
     ```
 2. Open with LiveReload Server.
